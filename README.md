@@ -25,7 +25,7 @@ extends InputType
 
 func get_input() -> void:
     # Gather input here
-    signals.some_signal.emit(example_input)
+    SignalBus.some_signal.emit(example_input)
 ```
 
 ### How Input Is Broadcast
