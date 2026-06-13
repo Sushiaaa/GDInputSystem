@@ -8,7 +8,7 @@ In the `_ready()` function of your `InputHandler`, create instances of your `Inp
 
 ```gdscript
 func _ready() -> void:
-    inputs.append(MyInputType.new())
+    inputs.append(InputType.new())
 ```
 
 Each entry in the `inputs` array should be an instance of `InputType` or one of its subclasses.
@@ -25,11 +25,9 @@ extends InputType
 
 func get_input() -> void:
     # Gather input here
-    pass
+    signals.some_signal.emit(example_input)
 ```
 
 ### How Input Is Broadcast
 
 After input is collected, it is emitted through the global signal bus. Any node in your scene can connect to the relevant signal and respond to the input without needing a direct reference to the `InputHandler`.
-
-This keeps input collection separate from gameplay logic and makes the system easier to reuse across different scenes or projects.
